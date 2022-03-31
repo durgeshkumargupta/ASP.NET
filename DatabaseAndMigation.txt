@@ -1,0 +1,35 @@
+______________________Program.cs_____________________________________
+builder.Services.AddDbContext<DataContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+______________________appsetting.json______________________________________
+
+  "ConnectionStrings": {
+    "DefaultConnection": "server=localhost\\sqlexpress;database=TestOneToOne;trusted_connection=true"
+
+  }
+
+_______________________________Data Context________________________________________
+
+ public class DataContext : DbContext
+    {
+        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+        
+        public DbSet<Employee> Employee{ get; set; }
+
+        public DbSet<Address> Address { get; set; }
+
+    }
+
+______________________________________Database Migration______________________________________________
+dotnet ef
+dotnet ef migrations add initialMigrations
+dotnet ef database update
+
+___________Drop Database_____________________
+drop-database
+
+
+

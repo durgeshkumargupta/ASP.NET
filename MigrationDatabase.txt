@@ -1,0 +1,6 @@
+dotnet ef
+dotnet ef migrations add initialMigrations
+dotnet ef database update
+
+___________Drop Database_____________________
+drop-database
